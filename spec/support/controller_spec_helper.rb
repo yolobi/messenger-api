@@ -13,7 +13,11 @@ module ControllerSpecHelper
   def valid_headers(user_id)
     {
       "Authorization" => token_generator(user_id),
-      "Content-Type" => "application/json"
+      # "Content-Type" => "application/json"
+      # https://stackoverflow.com/questions/49053954/testing-post-actiondispatchhttpparametersparseerror-765
+      # comment this because its caused
+      # ActionDispatch::Http::Parameters::ParseError:
+      # 783: unexpected token at 'message=&user_id=11'
     }
   end
 

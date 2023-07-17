@@ -7,6 +7,7 @@ FactoryBot.define do
     after(:create) do |conversation, evaluator|
       evaluator.users.each do |user|
         create(:conversation_member, conversation: conversation, user: user)
+        create(:chat, conversation: conversation, user: user)
       end
     end
   end
