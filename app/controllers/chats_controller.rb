@@ -4,6 +4,7 @@ class ChatsController < ApplicationController
 
     def index
         if @conversation.present?
+            @conversation.chats.last.is_read = true
             json_response(format_chats(@conversation.chats), :ok)
         else
             json_response({ error: 'Conversation not found' }, :not_found)
